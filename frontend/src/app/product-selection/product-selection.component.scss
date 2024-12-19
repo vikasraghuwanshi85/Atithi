@@ -1,0 +1,151 @@
+.wrapper {
+	width: 1280px;
+	margin: 0 auto;
+	border: 1px solid #000;
+	height: 90vh;
+}
+#prodSecTitle{
+	margin: 0;
+	padding: 12px 10px 3px;
+	font-family: sans-serif;
+	display: inline-block;
+}
+#productSelectionWrapper {
+	display: flex;
+	flex-direction: row;
+	margin: 10px;
+
+	#billingItemSec {
+		width: 40%;
+		border: 1px solid #fff;
+		height: 100vh;
+		padding: 10px;
+		max-height: 500px;
+		min-width: 450px;
+	}
+	#menu{
+		width: 100px;
+	    text-align: center;
+	    margin: 10px;
+	    align-content: center;
+	    display: flex;
+  		text-align: center;
+  		flex-direction: column;
+  		justify-content: space-between;
+	    #backButton {
+	    	background: #305930;
+		    width: 100%;
+		    height: 100px;
+		    border: 1px solid;
+		    align-content: center;
+		    display: grid;
+		    border-radius: 5px;
+		    cursor: pointer;
+	    }
+	    .itemCount{
+	    	background: #305930;
+		    width: 100px;
+		    text-align: center;
+		    font-size: 18px;
+		    padding: 8px 0;
+		    cursor: pointer;
+	    }
+	}
+
+	#itemsSelectionSec {
+		flex-grow: 1;
+		// border: 1px solid #fff;
+		padding: 10px;
+		overflow-y: scroll;
+		max-height: 500px;
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		align-content: baseline;
+		height: 100%;
+		max-width: 560px;
+
+		.items{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #fff;
+			border-radius: 10px;
+			text-align: center;
+			margin: 5px;
+			align-content: center;
+			cursor: pointer;
+			user-select: none;
+			display: grid;
+		}
+	}
+}
+
+
+#billTable {
+	width: 100%;
+	.rightAlign{
+		text-align: right;
+	}
+	.width200{
+		width: 200px;
+	}
+	tr th{
+		background: black;
+		line-height: 20px;
+		padding: 5px;
+		position: sticky;
+    	top: 0;
+	}
+	tbody{
+		tr:nth-child(even){
+			background-color: #646161;
+		}
+	}
+	tr.selectedItem td{
+		background: blue;
+	}
+
+}
+#billItemsTblWrapper{
+	height: 470px;
+	overflow-y: scroll;
+}
+#totalAmountWrapper{
+	text-align: right;
+    background: black;
+    font-size: 18px;
+    padding: 5px;
+    padding-right: 15px;
+}
+#selectKOT{
+	display: inline-block;
+    padding: 0 33px;
+    font-family: sans-serif;
+    label{
+
+    }
+    select{
+    	width: 100px;
+    }
+}
+#actionBtn{
+	display: flex;
+	flex-direction: row-reverse;
+	button{
+		height: 60px;
+	    width: 60px;
+	    margin: 0 5px;
+	}
+}
+.btnPrimary{
+	background: #87ceeb;
+}
+
+.clickable {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.clickable:hover {
+	color: blue;
+}

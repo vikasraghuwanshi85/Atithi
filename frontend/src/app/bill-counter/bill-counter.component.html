@@ -1,0 +1,72 @@
+<div id="dashboard">
+	@if(isStartAddingProduct) {
+		@defer(when isStartAddingProduct) {
+	  <app-product-selection
+		[counterName]="selectedCounterinfo?.name || ''"
+		[selectedCounterinfo]="selectedCounterinfo">
+	  </app-product-selection>
+	} @placeholder (minimum 100ms) {
+		<p>Loading...</p>
+	}
+} @else {
+  
+	  <div id="counterSelection">
+		<div id="billCounter">
+			@for(counterInfo of availableCounters; track counterInfo){
+				<div class="tbl" (click)="selectedCounter = counterInfo.name; selectedCounterID = counterInfo.sid" 
+				(dblclick)="addProducts(counterInfo)" 
+				[ngClass]="{'selected': selectedCounter == counterInfo.name, 'active': counterInfo.isActive == 1}">{{counterInfo.name}}
+				</div>
+			}
+		</div>
+		
+		<div id="actionBtnSec">
+		  <div id="sitting_cats_wrapper">
+			<!-- Loop through sitting categories and handle selection -->
+			<div class="sittingSections" *ngFor="let sittingCats of availablesittingCats" 
+				 (click)="onSittingCatChange($event, sittingCats?.sitting_id)">
+			  {{ sittingCats?.sitting_name }}
+			</div>
+		  </div>
+  
+		  <div class="flexRow">
+			<!-- Action buttons for Pending Bill, Order Options, and Generate Bill -->
+			<div class="flexItem justifyCenter">
+			  <button class="generateBill button" (click)="onBillGenerated()">
+				<i class="fa fa-credit-card-alt fa-2x" aria-hidden="true"></i>
+				Generate Bill
+			  </button>
+			</div>
+  
+			<div class="flexItem flexColumn">
+			  <button class="shiftCounter button">
+				Pending Bill
+			  </button>
+			  <button class="shiftCounter button">
+				Order Opt
+			  </button>
+			</div>
+		  </div>
+  
+		  <div class="flexRow">
+			<div class="flexItem flexColumn">
+			  <button class="shiftCounter button">
+				Pending Bill
+			  </button>
+			  <button class="shiftCounter button">
+				Order Opt
+			  </button>
+			</div>
+  
+			<div class="flexItem justifyCenter">
+			  <button class="generateBill button" (click)="onBillGenerated()">
+				<i class="fa fa-credit-card-alt fa-2x" aria-hidden="true"></i>
+				Generate Bill
+			  </button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	}
+  </div>
+  

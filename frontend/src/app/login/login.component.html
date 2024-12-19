@@ -1,0 +1,23 @@
+<div class="wrapper">
+	<div class="main">
+		@if (loginfrm) {
+		<div id="loginfrm">
+			<h1>Login Form</h1>
+			<h3>Enter your login credentials</h3>
+			<form>
+				<label for="username">Username</label>
+				<input type="text" id="username" name="username" [(ngModel)]="loginObj.userName"
+					placeholder="Enter your Username" required>
+
+				<label for="password">Password:</label>
+				<input type="password" id="password" name="password" 
+				[(ngModel)]="loginObj.password" placeholder="Enter Your Password." required>
+
+				<div class="wrap">
+					<button type="button" (click)="onLogin()">Login</button>
+				</div>	
+			</form>
+		</div>
+		}
+	</div>
+</div>

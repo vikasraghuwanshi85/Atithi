@@ -1,0 +1,101 @@
+<div id="prodSec" class="wrapper">
+<h4 id="prodSecTitle">New order Entry For Table:</h4>
+<div id="selectKOT">
+	<label>Select KOT </label>
+	<!-- {{existingKot | json}} -->
+	<select (change)="onSelectKot($event)">
+		<option value="all">All</option>
+	@for(item of existingKot; track item; let  i = $index){
+		<option [value]="i" >{{ item.kid }}</option>
+	}
+  		
+	</select>
+</div>
+
+	<div id="productSelectionWrapper">
+		<div id="billingItemSec">
+			<div id="billItemsTblWrapper">
+				<table id="billTable">
+					<thead>
+					<tr>
+						<th (click)="sortItems('kid')" class="clickable">Sno</th>
+						<th (click)="sortItems('name')" class="clickable width200">Item</th>
+						<th (click)="sortItems('quantity')" class="clickable rightAlign">Quantity</th>
+						<th (click)="sortItems('price')" class="clickable rightAlign">Price</th>
+						<th (click)="sortItems('amount')" class="clickable rightAlign">Amount</th>
+					</tr>
+					</thead>
+					<tbody>
+					@for(item of billItems; track item; let  i = $index){
+						<tr (click)="selectedItem=i; selectedItemName=item.name" [ngClass]="{'selectedItem': selectedItem === i}">
+							<td class="rightAlign">{{item.kid}}</td>
+							<td class="width200">{{item.name}}</td>
+							<td class="rightAlign">{{item.quantity}}</td>
+							<td class="rightAlign">{{item.price}}</td>
+							<td class="rightAlign">{{item.price * item.quantity}}</td>
+						</tr>
+					}
+					@for(item of bill.product; track item; let  i = $index){
+						<tr (click)="selectedItem=i; selectedItemName=item.name" [ngClass]="{'selectedItem': selectedItem === i}">
+							<td class="rightAlign"></td>
+							<td class="width200">{{item.name}}</td>
+							<td class="rightAlign">{{item.quantity}}</td>
+							<td class="rightAlign">{{item.price}}</td>
+							<td class="rightAlign">{{item.price * item.quantity}}</td>
+						</tr>
+					}
+
+					</tbody>
+					
+				</table>
+			</div>
+			<div id="totalAmountWrapper">Total: {{totalAmount}}</div>
+		</div>
+		<div style="display: flex; border: 1px solid;">
+		<div id="menu">
+			<div id="backButton" (click)="backtoCategoryView()">Atithi Restaurant</div>
+			@if(!isdisplaycat){
+				<div class="itemCount" (click)="increaseQuantityBy(1)">1</div>
+				<div class="itemCount" (click)="increaseQuantityBy(2)">2</div>
+				<div class="itemCount" (click)="increaseQuantityBy(3)">3</div>
+				<div class="itemCount" (click)="increaseQuantityBy(4)">4</div>
+				<div class="itemCount" (click)="increaseQuantityBy(5)">5</div>
+				<div class="itemCount" (click)="increaseQuantityBy(6)">6</div>
+				<div class="itemCount" (click)="increaseQuantityBy(7)">7</div>
+				<div class="itemCount" (click)="increaseQuantityBy(8)">8</div>
+				<div class="itemCount" (click)="increaseQuantityBy(9)">9</div>
+				<div class="itemCount">More</div>
+			}
+			
+		</div>
+			@if(isdisplaycat){
+			<div id="itemsSelectionSec">
+				@for(cat of categoryList; track cat){
+					<div class="items" (click)="selectCategory(cat.id)">{{cat.name}}</div>
+				}
+			</div>
+		}
+		@else {
+			
+				<div id="itemsSelectionSec">
+				@for(product of productList; track product){
+					<div class="items" (click)="selectProduct(product)">{{product.name}}</div>
+				}
+			
+			</div>
+			
+		}
+		</div>
+		
+	</div>
+	<div id="actionBtn">
+		<div>
+			<button class="btnPrimary" (click)="deleteItemFromKot()">Delete</button>
+			<button (click)="backToBillCounterPage($event)">Exit</button>
+			<button class="btnPrimary" (click)="saveKOT()">Save</button>
+
+		</div>
+		
+	</div>
+
+</div>
